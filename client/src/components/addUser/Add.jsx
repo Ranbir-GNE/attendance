@@ -22,7 +22,7 @@ export const Add = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/create", user)
+      .post("https://attendance-znk2.onrender.com/api/create", user)
       .then((response) => {
         toast.success(response.data.msg, { duration: 2000 });
         navigate("/");

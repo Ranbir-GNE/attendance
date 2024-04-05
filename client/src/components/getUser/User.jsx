@@ -19,7 +19,7 @@ export const User = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:8000/api/getUser/${id}`);
+        const response = await axios.get(`https://attendance-znk2.onrender.com/api/getUser/${id}`);
         // console.log(response.data); // Assuming your backend route for getting user data is /api/user
         setUserData(response.data.user); // Accessing user data from the 'user' key
       } catch (error) {

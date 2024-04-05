@@ -80,7 +80,7 @@ export const login = async (req, res) => {
     } else {
       return res
         .status(200)
-        .json({ success: true, msg: "Logged in successfully" });
+        .json({ success: true, msg: "Logged in successfully",data:userExist });
     }
   } catch (err) {
     res.status(500).json({ error: err });
@@ -109,24 +109,22 @@ export const admin = async (req, res) => {
 };
 export const getUser = async (req, res) => {
   try {
-    const loggedInUserId = req.User._id;
-    getUser;
-    console.log("in"); // Assuming you have implemented user authentication and stored user information in req.user
-    const userExist = await User.findById(loggedInUserId).select("-password");
-    if (!userExist) {
-      return res.status(404).json({ msg: "User not found" });
-    } else {
-      return res.status(200).json(userExist);
+    const userId = req.params.id; // Assuming you pass user ID as a parameter
+    const user = await User.findById(userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
     }
-  } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(200).json({ success: true, user });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
   }
 };
+
 export const attendClass = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(
       req.params.id,
-      { $inc: { attendedClass: 1 } },
+      { $inc: { attendedClass: 1, totalClass: 1 } },
       { new: true }
     );
 

@@ -24,7 +24,7 @@ const Edit = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/getOne/${id}`)
+      .get(`https://attendance-znk2.onrender.com/api/getOne/${id}`)
       .then((response) => {
         setUser(response.data);
       })
@@ -36,7 +36,7 @@ const Edit = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .put(`http://localhost:8000/api/update/${id}`, user)
+      .put(`https://attendance-znk2.onrender.com/api/update/${id}`, user)
       .then((response) => {
         toast.success(response.data.msg, { duration: 2000 });
         navigate("/");

@@ -7,13 +7,17 @@ export const Admin = () => {
   const [users, setUsers] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:8000/api/getALl");
-    setUsers(response.data);
+    try {
+      const response = await axios.get("https://attendance-znk2.onrender.com/api/getAll");
+      setUsers(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const attendClass = async (userId) => {
     try {
-      await axios.put(`http://localhost:8000/api/user/${userId}/attendClass`);
+      await axios.put(`https://attendance-znk2.onrender.com/api/user/${userId}/attendClass`);
       // After the request is successful, fetch the user data again to update the UI
       fetchData();
     } catch (error) {
@@ -48,7 +52,7 @@ export const Admin = () => {
         <tbody>
           {users.map((user, index) => {
             return (
-              <tr key={user._id}>
+              <tr key={user._id}> 
                 <td>{index + 1}</td>
                 <td>
                   {user.fname} {user.lname}

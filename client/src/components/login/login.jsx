@@ -19,17 +19,23 @@ export const Login = () => {
       });
       if (response.data.success) {
         toast.success("Logged in successfully");
+        // Check if admin key is provided and valid (assuming it's entered by the user)
         if (key) {
           navigate("/admin");
         } else {
-          // After successful login
-          navigate("/user");
+          const id= response.data.data._id
+          navigate('/user', { state: { id: id } });
         }
       } else {
-        toast.error("Invalid credentials");
+        toast.error(response.data.message || "Invalid credentials");
       }
     } catch (error) {
-      toast.error("An error occurred");
+      // Handle specific error messages based on error response
+      if (error.response) {
+        toast.error(error.response.data.message || "An error occurred");
+      } else {
+        toast.error("An error occurred");
+      }
     }
   };
 

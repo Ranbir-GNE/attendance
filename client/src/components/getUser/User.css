@@ -15,6 +15,13 @@
   border-radius: 5px;
   padding: 10px;
 }
+
+.btns {
+  width: 100%;
+  display: flex;
+  place-content: space-between;
+}
+
 .logoutButton {
   text-decoration: none;
   background-color: red;

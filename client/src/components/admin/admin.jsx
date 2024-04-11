@@ -39,16 +39,19 @@ export const Admin = () => {
       </Link>
 
       <table border={1} cellPadding={10} cellSpacing={0}>
-        <thead>
-          <tr>
-            <th>S.No.</th>
-            <th>Name</th>
-            <th>User Email</th>
-            <th>Attendanded Class</th>
-            <th>Total Classes</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <thead>
+              <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>User Email</th>
+                <th>Course 1</th>
+                <th>Course 2</th>
+                <th>Course 3</th>
+                <th>Course 4</th>
+                <th>Course 5</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
         <tbody>
           {users.map((user, index) => {
             return (
@@ -58,14 +61,17 @@ export const Admin = () => {
                   {user.fname} {user.lname}
                 </td>
                 <td>{user.email}</td>
-                <td>{user.attendedClass}</td>
-                <td>{user.totalClass}</td>
+                <td>{user.semester}</td>
+
                 <td className="actionButton">
                   <button onClick={() => attendClass(user._id)}>
                     <i className="fa-solid fa-user-plus"></i>
                   </button>
                   <Link to={`/edit/` + user._id}>
                     <i className="fa-solid fa-pen-to-square"></i>
+                  </Link>
+                  <Link to={`/course/` + user._id}>
+                    <i className="fas fa-book"></i>
                   </Link>
                 </td>
               </tr>

@@ -12,6 +12,7 @@ export const Add = () => {
     attendedClass: "",
     totalClass: "",
     password: "",
+    course:"",
   };
   const [user, setUser] = useState(users);
   const navigate = useNavigate();
@@ -93,6 +94,23 @@ export const Add = () => {
           />
         </div>
         <div className="inputGroup">
+          <label htmlFor="selectCourse">Select Course</label>
+          <select
+            value={user.course}
+            onChange={inputHandler}
+            id="selectCourse"
+            name="course"
+          >
+            <option value="">Select Course</option>
+            <option value="1">Course 1</option>
+            <option value="2">Course 2</option>
+            <option value="3">Course 3</option>
+            <option value="4">Course 4</option>
+            <option value="5">Course 5</option>
+          </select>
+        </div>
+       
+        <div className="inputGroup">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -112,7 +130,7 @@ export const Add = () => {
             name="key"
             autoComplete="off"
             placeholder="key"
-            required="false"
+            required={false}
           />
         </div>
         <div className="inputGroup">

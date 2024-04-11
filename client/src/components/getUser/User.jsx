@@ -30,9 +30,6 @@ export const User = () => {
     fetchUserData();
   }, [id]); // Ensure useEffect runs when ID changes
 
-  const attendClass = async (userId) => {
-    // Implement your attendClass functionality here
-  };
 
   return (
     <div className="userTable">
@@ -45,7 +42,12 @@ export const User = () => {
                 <th>Name</th>
                 <th>User Email</th>
                 <th>Attendanded Class</th>
-                <th>Total Classes</th>
+                <th>Total Class</th>
+                <th>Course 1</th>
+                <th>Course 2</th>
+                <th>Course 3</th>
+                <th>Course 4</th>
+                <th>Course 5</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -56,10 +58,15 @@ export const User = () => {
                 <td>{userData.email}</td>
                 <td>{userData.attendedClass}</td>
                 <td>{userData.totalClass}</td>
+                <td>{userData.Course_1}</td>
+                <td>{userData.Course_2}</td>
+                <td>{userData.Course_3}</td>
+                <td>{userData.Course_4}</td>
+                <td>{userData.Course_5}</td>
                 <td className="actionButton">
-                  <button onClick={() => attendClass(userData._id)}>
+                  {/* <button onClick={() => attendClass(userData._id)}>
                     <i className="fa-solid fa-user-plus"></i>
-                  </button>
+                  </button> */}
                   {/* You might need to import Link from react-router-dom */}
                   {/* Assuming '/edit' route is for editing user */}
                   <Link to={`/edit/${userData._id}`}>

@@ -1,33 +1,42 @@
 import mongoose from 'mongoose';
 
-const userSchema =new mongoose.Schema({
-    fname:{
-        type:String,
-        required:true
+const courseSchema = new mongoose.Schema({
+    courseNumber: {
+        type: Number,
+        required: true,
+        unique: true
     },
-    lname:{
-        type:String,
-        required:true
+    attendedClass: {
+        type: Number,
+        default: 0
     },
-    email:{
-        type:String,
-        unique:true,
-    },
-    attendedClass:{
-        type:Number,
-        required:true
-    },
-    totalClass:{
-        type:Number,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    key:{
-        type:String,
+    totalClass: {
+        type: Number,
+        default: 0
     }
-})
+});
+
+const userSchema = new mongoose.Schema({
+    fname: {
+        type: String,
+        required: true
+    },
+    lname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        unique: true,
+    },
+    courses: [courseSchema], // Array of course schemas
+    password: {
+        type: String,
+        required: true
+    },
+    key: {
+        type: String,
+    }
+});
 
 export default mongoose.model('User', userSchema);

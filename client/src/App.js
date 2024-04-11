@@ -6,6 +6,7 @@ import Add from './components/addUser/Add.jsx';
 import Edit from './components/updateUser/Edit.jsx';
 import Login from './components/login/login.jsx';
 import Admin from './components/admin/admin.jsx';
+import Course from './components/updateMarks/course.jsx';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/add" element={<Add />} />
             <Route path="/edit/:id" element={<Edit/>} />
+            <Route path="/course/:id" element={<Course/>} />
           </Routes>
         </div>
   </div>

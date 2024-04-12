@@ -71,15 +71,15 @@ export const Admin = () => {
               ))}
 
               <td className="actionButton">
-                <button onClick={() => attendClass(user._id)}>
+                {/* <button onClick={() => attendClass(user._id)}>
                   <i className="fa-solid fa-user-plus"></i>
-                </button>
+                </button> */}
                 <Link to={`/edit/` + user._id}>
                   <i className="fa-solid fa-pen-to-square"></i>
                 </Link>
-                <Link to={`/course/` + user._id}>
+                {/* <Link to={`/course/` + user._id}>
                   <i className="fas fa-book"></i>
-                </Link>
+                </Link> */}
               </td>
             </tr>
           ))}

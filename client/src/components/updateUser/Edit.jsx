@@ -19,7 +19,7 @@ const Edit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/getOne/${id}`)
+      .get(`https://attendance-6aq7.onrender.com/api/getOne/${id}`)
       .then((response) => {
         setFName(response.data.fname)
         setLName(response.data.lname)
@@ -48,7 +48,7 @@ const Edit = () => {
     }
 
     await axios
-      .put(`http://localhost:8000/api/update/${id}`, user)
+      .put(`https://attendance-6aq7.onrender.com/api/update/${id}`, user)
       .then((response) => {
         toast.success(response.data.msg, { duration: 2000 });
         navigate("/");

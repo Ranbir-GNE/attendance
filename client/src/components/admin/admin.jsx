@@ -8,7 +8,7 @@ export const Admin = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/getAll");
+      const response = await axios.get("https://attendance-6aq7.onrender.com/api/getAll");
       setUsers(response.data);
       console.log(response.data)
     } catch (error) {
@@ -18,7 +18,7 @@ export const Admin = () => {
 
   const attendClass = async (userId) => {
     try {
-      await axios.put(`http://localhost:8000/api/user/${userId}/attendClass`);
+      await axios.put(`https://attendance-6aq7.onrender.com/api/user/${userId}/attendClass`);
       // After the request is successful, fetch the user data again to update the UI
       fetchData();
     } catch (error) {

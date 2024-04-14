@@ -8,9 +8,11 @@ export const Admin = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://attendance-6aq7.onrender.com/api/getAll");
+      const response = await axios.get(
+        "https://attendance-6aq7.onrender.com/api/getAll"
+      );
       setUsers(response.data);
-      console.log(response.data)
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -18,7 +20,9 @@ export const Admin = () => {
 
   const attendClass = async (userId) => {
     try {
-      await axios.put(`https://attendance-6aq7.onrender.com/api/user/${userId}/attendClass`);
+      await axios.put(
+        `https://attendance-6aq7.onrender.com/api/user/${userId}/attendClass`
+      );
       // After the request is successful, fetch the user data again to update the UI
       fetchData();
     } catch (error) {
@@ -29,7 +33,6 @@ export const Admin = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
 
   return (
     <div className="userTable">
@@ -64,11 +67,18 @@ export const Admin = () => {
                 {user.fname} {user.lname}
               </td>
               <td>{user.email}</td>
-              {user.courses.sort((a,b) =>  a.courseNumber - b.courseNumber).map((course) => (
-                <td key={course.courseNumber}>
-                {course.totalClass !== 0 ? `${((course.attendedClass / course.totalClass) * 100).toPrecision(4)} %` : "N/A" }
-                </td>
-              ))}
+              {user.courses
+                .sort((a, b) => a.courseNumber - b.courseNumber)
+                .map((course) => (
+                  <td key={course.courseNumber}>
+                    {course.totalClass !== 0
+                      ? `${(
+                          (course.attendedClass / course.totalClass) *
+                          100
+                        ).toPrecision(4)} %`
+                      : "N/A"}
+                  </td>
+                ))}
 
               <td className="actionButton">
                 {/* <button onClick={() => attendClass(user._id)}>

@@ -30,7 +30,6 @@ export const User = () => {
     fetchUserData();
   }, [id]); // Ensure useEffect runs when ID changes
 
-
   return (
     <div className="userTable">
       {userData ? (
@@ -41,8 +40,6 @@ export const User = () => {
                 <th>S.No.</th>
                 <th>Name</th>
                 <th>User Email</th>
-                <th>Attendanded Class</th>
-                <th>Total Class</th>
                 <th>Course 1</th>
                 <th>Course 2</th>
                 <th>Course 3</th>
@@ -52,29 +49,26 @@ export const User = () => {
               </tr>
             </thead>
             <tbody>
-              <tr key={userData._id}>
-                <td>1</td>
-                <td>{userData.fname} {userData.lname}</td>
-                <td>{userData.email}</td>
-                <td>{userData.attendedClass}</td>
-                <td>{userData.totalClass}</td>
-                <td>{userData.Course_1}</td>
-                <td>{userData.Course_2}</td>
-                <td>{userData.Course_3}</td>
-                <td>{userData.Course_4}</td>
-                <td>{userData.Course_5}</td>
-                <td className="actionButton">
-                  {/* <button onClick={() => attendClass(userData._id)}>
-                    <i className="fa-solid fa-user-plus"></i>
-                  </button> */}
-                  {/* You might need to import Link from react-router-dom */}
-                  {/* Assuming '/edit' route is for editing user */}
-                  <Link to={`/edit/${userData._id}`}>
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
-                </td>
-              </tr>
-            </tbody>
+  {userData && (
+    <tr key={userData._id}>
+      <td>1</td>
+      <td>
+        {userData.fname} {userData.lname}
+      </td>
+      <td>{userData.email}</td>
+      <td>{userData.Course_1}</td>
+      <td>{userData.Course_2}</td>
+      <td>{userData.Course_3}</td>
+      <td>{userData.Course_4}</td>
+      <td>{userData.Course_5}</td>
+      <td className="actionButton">
+        <Link to={`/edit/${userData._id}`}>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </Link>
+      </td>
+    </tr>
+  )}
+</tbody>
           </table>
         </div>
       ) : (
